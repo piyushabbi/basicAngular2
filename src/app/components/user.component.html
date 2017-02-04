@@ -1,0 +1,30 @@
+<h1>Basics of Angular 2</h1>
+<form>
+  <label>Enter Your Name:- </label><br/>
+  <input type="text" name="name" placeholder="Name" [(ngModel)]="name" />
+</form>
+<h2>Hello {{name}} !</h2>
+<section>
+  <strong>Name: </strong> <span>{{ name }}</span> <br/>
+  <strong>Email: </strong> <span>{{ email }}</span> <br/>
+  <strong>Contact: </strong> <span>{{ contact }}</span> <br/><br/>
+  <button type="button" (click)="toggleHobbies();">
+    {{ showHobbies ? 'Hide' : 'Show' }} Hobbies
+  </button>
+  <div *ngIf='showHobbies'>
+    <h3>Hobbies</h3>
+    <ul>
+      <li *ngFor='let hobby of hobbies; let i = index'> {{hobby}} <span style="cursor: pointer; color: red;" (click)="deleteHobby(i);">X</span> </li>
+    </ul>
+    <input type="text" #hobby />
+    <button type="button" (click)="addHobby(hobby);">Add a Hobby</button>
+  </div>
+  <hr />
+  <h3>Posts</h3>
+  <div *ngFor="let post of posts; let i=index">
+    <span>{{ i+1 }}.</span>
+    <i style="text-transform: uppercase;">{{ post.title }}</i>
+    <p>{{ post.body }}</p>
+    <br/>
+  </div>
+</section>
